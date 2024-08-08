@@ -57,8 +57,8 @@ var app = builder.Build();
         if (!app.Environment.IsDevelopment())
             s.SupportedSubmitMethods();                     // Só habilita o "Try it out" para os tipos informados ex: SubmitMethod.Get
 
-        s.InjectStylesheet("/wwwroot/swagger-ui/custom.css");
-        s.InjectJavascript("/wwwroot/swagger-ui/custom.js", "text/javascript");
+        s.InjectStylesheet("/swagger-ui/custom.css");
+        s.InjectJavascript("/swagger-ui/custom.js", "text/javascript");
 
         s.DisplayRequestDuration();                         // Tempo de demorou o request
         //s.DisplayOperationId();         // mostra um nome loko no método      
@@ -73,6 +73,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseStaticFiles();
 app.MapControllers();
 
 app.Run();
