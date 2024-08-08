@@ -1,0 +1,38 @@
+﻿
+.swagger-ui .topbar .download-url-wrapper {
+    visibility: hidden;
+}
+
+.topbar-wrapper img {
+    content: url('/swagger-ui/logo.png');
+}
+
+
+/*.topbar-wrapper img[alt="Swagger UI"], .topbar-wrapper span {
+    visibility: hidden;
+}
+
+.topbar-wrapper span:after {
+    content: 'mylogo';
+    color: #fff;
+    visibility: visible;
+    display: block;
+    position: absolute;
+    padding: 5px;
+    top: 2px;
+}
+
+.topbar-wrapper img {
+    content: url('favicon.ico');
+}
+
+    .topbar-wrapper img[alt="Swagger UI"], .topbar-wrapper span {
+        visibility: collapse;
+    }
+
+.topbar-wrapper .link:after {
+    content: url('swagger-ui/logo_praxio_negativa-300x120.png');
+    position: absolute;
+    top: -5px;
+    //fiddle with this as needed
+}*/
