@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
 using System.ComponentModel;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,7 @@ string VERSAO = "v1";
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
 builder.Services.AddSwaggerGen(opt =>
 {
     opt.DescribeAllParametersInCamelCase();
@@ -24,16 +27,21 @@ builder.Services.AddSwaggerGen(opt =>
         TermsOfService = new Uri("https://www.google.com/"),
         License = new OpenApiLicense
         {
-            Name = "Nome",
+            Name = "License.Nome",
             Url = new Uri("https://www.google.com/"),
         },
         Contact = new OpenApiContact
         {
-            Name = "Nome",
+            Name = "Contact.Nome",
             Email = "Email",
             Url = new Uri("https://www.google.com/"),
         }
-    });
+    });    
+
+    foreach (var itemFile in Directory.GetFiles(AppContext.BaseDirectory, "*.xml"))
+        opt.IncludeXmlComments(itemFile, true);
+
+    opt.ExampleFilters();
 });
 
 var app = builder.Build();
@@ -66,7 +74,9 @@ var app = builder.Build();
         //s.EnableDeepLinking();          // não sei oq é
         //s.ShowExtensions();             // não sei oq é
         //s.EnableValidator(null);        // não sei oq é
-    });
+        
+    });    
+    
 }
 
 app.UseHttpsRedirection();
