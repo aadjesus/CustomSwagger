@@ -66,7 +66,7 @@ var app = builder.Build();
             s.SupportedSubmitMethods();                     // Só habilita o "Try it out" para os tipos informados ex: SubmitMethod.Get
 
         s.InjectStylesheet("/swagger-ui/custom.css");
-        s.InjectJavascript("/swagger-ui/custom.js", "text/javascript");
+        s.InjectJavascript("/swagger-ui/custom.js");
 
         s.DisplayRequestDuration();                         // Tempo de demorou o request
         //s.DisplayOperationId();         // mostra um nome loko no método      
